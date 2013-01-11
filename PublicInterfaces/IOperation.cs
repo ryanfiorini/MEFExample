@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleCalculator
+namespace PublicInterfaces
 {
-    public interface IOperationData
+    public interface IOperation
     {
-        Char Symbol { get; }
+        int Operate(int left, int right);
     }
 }

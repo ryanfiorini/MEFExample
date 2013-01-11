@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using PublicInterfaces;
 
 namespace SimpleCalculator
 {
@@ -22,6 +23,9 @@ namespace SimpleCalculator
 
             //Adds all the parts found in the same assembly as the Program class
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+
+            // user relative path in production environment
+            catalog.Catalogs.Add(new DirectoryCatalog(@"C:\Users\Ryan\SkyDrive\Development\MEF\SimpleCalculator\SimpleCalculator\Extensions"));
 
             //Create the CompositionContainer with the parts in the catalog
             _container = new CompositionContainer(catalog);
