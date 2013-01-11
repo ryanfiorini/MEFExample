@@ -8,9 +8,12 @@ using System.ComponentModel.Composition.Hosting;
 
 namespace SimpleCalculator
 {
-    public class Program
+    class Program
     {
         private CompositionContainer _container;
+
+        [Import(typeof(ICalculator))]
+        public ICalculator calculator;
 
         private Program()
         {
@@ -36,6 +39,14 @@ namespace SimpleCalculator
 
         static void Main(string[] args)
         {
+            Program p = new Program(); //Composition is performed in the constructor
+            String s;
+            Console.WriteLine("Enter Command:");
+            while (true)
+            {
+                s = Console.ReadLine();
+                Console.WriteLine(p.calculator.Calculate(s));
+            }
         }
     }
 }
